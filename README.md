@@ -1,6 +1,6 @@
 ## MAX31855 Arduino Library
 
-A simple and lightweigth Arduino library for MAX31855 thermocouple-to-digital convert chip. I created this library because some of similar library doesn't handle the negative temperature correctly.
+A simple and lightweigth Arduino library for MAX31855 thermocouple-to-digital convert chip. I created this library because some of similar libraries are unnecessary complicate with extra dependency library or some with wrong negative temperature reading.
 
 ### Basic Usage
 
