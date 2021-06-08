@@ -18,7 +18,7 @@ void setup()
 {
   Serial.begin(115200);
   while(!Serial);
-  while (!sensor.begin()) {
+  while (sensor.begin()!=0) {
     Serial.println(F("Fault detected, check your thermocouple connection"));
     delay(5000);
   };
