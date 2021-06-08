@@ -61,7 +61,7 @@ int32_t MAX31855::_spiRead()
     d = (data[0] << 8) | data[1];
     d = (d << 8) | data[2];
     d = (d << 8) | data[3];
-    return _d;
+    return d;
 }
 
 /*
