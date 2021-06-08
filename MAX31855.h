@@ -18,7 +18,7 @@ class MAX31855 {
 public:
   MAX31855(uint8_t chipSelect);
   uint8_t begin(void);
-  uint8_t thermocoupleFault(void);
+  float thermocoupleTemperature(void);
   float internalTemperature(void);
 
 private:
