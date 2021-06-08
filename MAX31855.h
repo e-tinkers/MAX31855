@@ -5,6 +5,7 @@
   @license   See LiCENSE
   @reference https://datasheets.maximintegrated.com/en/ds/MAX31855.pdf
   @section   HISTORY
+  V1.0.1     8 Jun, 2021 - Change begin() method API to report fault status
   V1.0.0     8 Jun, 2021 - Creation of this library
 */
 #ifndef MAX31855_h
@@ -16,28 +17,27 @@
 class MAX31855 {
 public:
   MAX31855(uint8_t chipSelect);
-  void begin(void);
+  uint8_t begin(void);
   uint8_t thermocoupleFault(void);
-  float thermocoupleTemperature(void);
   float internalTemperature(void);
 
 private:
   uint8_t _cs;
   uint8_t _fault;
-  int32_t _d;
   int32_t _spiRead();
 };
 
-MAX31855::MAX31855(uint8_t chipSelect) {
+MAX31855::MAX31855(uint8_t chipSelect=SS) {
   _cs = chipSelect;
   _fault = 0xFF;
-  _d = 0;
 }
 
-void MAX31855::begin() {
+uint8_t MAX31855::begin() {
   pinMode(_cs, OUTPUT);
   digitalWrite(_cs, HIGH);
   SPI.begin();
+  _spiRead();
+  return _fault;
 }
 
 /*
@@ -61,13 +61,7 @@ int32_t MAX31855::_spiRead()
     d = (data[0] << 8) | data[1];
     d = (d << 8) | data[2];
     d = (d << 8) | data[3];
-    _d = d;
     return _d;
-}
-
-uint8_t MAX31855::thermocoupleFault() {
-  _spiRead();
-  return _fault;
 }
 
 /*
