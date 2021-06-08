@@ -28,7 +28,7 @@ void loop()
 }
 ```
 
-See [demo.ino]() for more complete usage with fault detection as well as reading the internal chip(junction) temperature.
+See [demo.ino](https://github.com/e-tinkers/MAX31855/tree/master/examples) for more complete usage with fault detection as well as reading the internal chip(junction) temperature.
 
 ### Notes
 According to [MAX31855 datasheet](https://datasheets.maximintegrated.com/en/ds/MAX31855.pdf), It is strongly recommended to add a 10nF differential capacitor, placed across the T+ and T-pins, in order to filter noise on the thermocouple lines.
