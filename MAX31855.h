@@ -79,7 +79,7 @@ float MAX31855::thermocoupleTemperature()
   if (d & 0x00020000) {  // check the sign bit to see if it is a negative value
     d = 0xFFFC0000 | (d & 0x0003FFFF);  //do the correction on sign value
   }
-  return d/4;
+  return d/4.0;
 }
 
 /*
@@ -97,6 +97,6 @@ float MAX31855::internalTemperature()
   if (d & 0x00000800) {       // check the sign bit to see if it is a negative value
     d = (d & 0x000000FF) | 0xFFFFFF00;  //do the correction on sign value
   }
-  return d/16;
+  return d/16.0;
 }
 #endif
